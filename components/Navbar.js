@@ -23,7 +23,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className='flex ssm:mx-6 ssm:mt-3 md:mx-32 md:mt-5 lg:mx-14 lg:mt-7 items-center'>
+            <div className='flex ssm:mx-6 ssm:mt-3 md:mx-32 md:mt-5 lg:mx-14 lg:mt-7 items-center my-8'>
                 <div className='h-full'>
                     <Link href='/'>
                         <Image src={logo} className='h-12 max-w-min' alt='Gigl Logo' priority={true} />
