@@ -7,6 +7,8 @@ import { BiChevronDown } from 'react-icons/bi'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
 
+
+
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
@@ -17,6 +19,8 @@ const Navbar = () => {
     const handleMenuLeave = () => {
         setIsMenuOpen(false);
     };
+
+
     return (
         <>
             <div className='flex ssm:mx-6 ssm:mt-3 md:mx-32 md:mt-5 lg:mx-14 lg:mt-7 items-center'>
@@ -115,13 +119,82 @@ const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <div className='mx-32 flex items-center mt-6 font-medium'>
-                    <h1 className=''>Service Portfolio</h1>
-                    <div className='float-right'>
-                        <BiChevronDown className='float-right' />
+                <div className='absolute w-full lg:hidden'>
+                    <div
+                        onMouseEnter={handleMenuEnter}
+                        onMouseLeave={handleMenuLeave}
+                    >
+                        <div className='ssm:mx-10 md:mx-32 flex items-center relative mt-4 font-medium text-secondary hover:text-primary hover:cursor-pointer'>
+                            <h1>Service Portfolio</h1>
+                            <div className='absolute right-0'>
+                                <BiChevronDown className='float-right' />
+                            </div>
+                        </div>
+                        {isMenuOpen && (
+                            <div className="ssm:mx-10 md:mx-32 mt-4 bg-color font-medium text-secondary">
+                                <Link
+                                    href="#"
+                                    className="block px-4 py-4 text-sm hover:text-primary "
+                                    role="menuitem"
+                                >
+                                    Domestic Logistics
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="block px-4 py-4 text-sm hover:text-primary"
+                                    role="menuitem"
+                                >
+                                    Coporate Logistics
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="block px-4 py-4 text-sm hover:text-primary"
+                                    role="menuitem"
+                                >
+                                    Overseas Shipping
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="block px-4 py-4 text-sm hover:text-primary"
+                                    role="menuitem"
+                                >
+                                    Ecommerce Logistics
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="block px-4 py-4 text-sm hover:text-primary"
+                                    role="menuitem"
+                                >
+                                    Wallet and Added Services
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                    <div className='ssm:mx-10 md:mx-32 mt-4 text-secondary'>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                            <Link href='#' className='my-20'>
+                                Our Offices
+                            </Link>
+                        </div>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                            <Link href='#'>
+                                Blog
+                            </Link>
+                        </div>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                            <Link href='#'>
+                                FAQs
+                            </Link>
+                        </div>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                            <Link href='#'>
+                                About Us
+                            </Link>
+                        </div>
                     </div>
                 </div>
             )}
+
         </>
     )
 }
