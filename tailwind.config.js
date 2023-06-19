@@ -17,7 +17,7 @@ module.exports = {
       },
       screens: {
         'ssm': '360px'
-      }
+      },
     },
   },
   plugins: [],
