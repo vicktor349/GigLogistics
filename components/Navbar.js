@@ -22,8 +22,8 @@ const Navbar = () => {
 
 
     return (
-        <>
-            <div className='flex ssm:mx-6 ssm:mt-3 md:mx-32 md:mt-5 lg:mx-14 lg:mt-7 items-center my-8'>
+        <div className='sticky top-0 z-50 bg-[rgba(255,255,255,1)] ssm:mt-3 pt-5 pb-8 shadow-lg'>
+            <div className='flex ssm:mx-6 md:mx-32 lg:mx-14 items-center'>
                 <div className='h-full'>
                     <Link href='/'>
                         <Image src={logo} className='h-12 max-w-min' alt='Gigl Logo' priority={true} />
@@ -43,7 +43,7 @@ const Navbar = () => {
                                     </div>
                                     {isMenuOpen && (
                                         <div className="absolute right-0 mt-2 w-52 bg-white  divide-gray-100 rounded-md shadow-lg outline-none">
-                                            <div className="py-4" role="none">
+                                            <div>
                                                 <Link
                                                     href="#"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-[rgba(213,52,58)]"
@@ -119,7 +119,7 @@ const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <div className='absolute w-full lg:hidden'>
+                <div className='absolute bg-[rgba(255,255,255,1)] w-full lg:hidden'>
                     <div
                         onMouseEnter={handleMenuEnter}
                         onMouseLeave={handleMenuLeave}
@@ -195,7 +195,7 @@ const Navbar = () => {
                 </div>
             )}
 
-        </>
+        </div>
     )
 }
 
