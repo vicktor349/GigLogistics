@@ -45,28 +45,28 @@ const Navbar = () => {
                                         <div className="absolute right-0 mt-2 w-52 bg-white  divide-gray-100 rounded-md shadow-lg outline-none">
                                             <div>
                                                 <Link
-                                                    href="#"
+                                                    href="/domesticlogistics"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-[rgba(213,52,58)]"
                                                     role="menuitem"
                                                 >
                                                     Domestic Logistics
                                                 </Link>
                                                 <Link
-                                                    href="#"
+                                                    href="corporatelogistics"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-[rgba(213,52,58)]"
                                                     role="menuitem"
                                                 >
                                                     Coporarate Logistics
                                                 </Link>
                                                 <Link
-                                                    href="#"
+                                                    href="/overseashipping"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-[rgba(213,52,58)]"
                                                     role="menuitem"
                                                 >
                                                     Overseas Shipping
                                                 </Link>
                                                 <Link
-                                                    href="#"
+                                                    href="/ecommercelogistics"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-[rgba(213,52,58)]"
                                                     role="menuitem"
                                                 >
@@ -133,28 +133,28 @@ const Navbar = () => {
                         {isMenuOpen && (
                             <div className="ssm:mx-10 md:mx-32 mt-4 bg-color font-medium text-secondary">
                                 <Link
-                                    href="#"
+                                    href="/domesticlogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary "
                                     role="menuitem"
                                 >
                                     Domestic Logistics
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/corporatelogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
                                 >
                                     Coporate Logistics
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/overseashipping"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
                                 >
                                     Overseas Shipping
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/ecommercelogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
                                 >
