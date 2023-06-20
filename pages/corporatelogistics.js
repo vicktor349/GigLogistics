@@ -29,7 +29,7 @@ const corporatelogistics = () => {
                             <BsArrowLeft className='mr-2' /> Back
                         </div>
                         <div className='mx-auto my-12 sm:mt-24 md:mt-24 text-center'>
-                            <h1 className='text-center mb-5 font-bold text-3xl'>CORPORATE LOGISTICS</h1>
+                            <h1 className='text-center mb-5 font-bold text-3xl text-[#374151]'>CORPORATE LOGISTICS</h1>
                             <p className='text-[#374151] text-center'> Corporate logistics solutions in sync with your business goals </p>
                         </div>
                     </div>
