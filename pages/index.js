@@ -7,11 +7,17 @@ import Button from "@/components/Button"
 import DeliveryService from "@/components/DeliveryService"
 import DownloadApp from "@/components/DownloadApp"
 import WhatWeDo from "@/components/WhatWeDo"
+import Head from "next/head"
 
 
 export default function Home() {
   return (
-    <main className="fonts-[Inter]">
+    <main className="fonts-Inter">
+      <Head>
+        <title>
+          GIGL | Africa's Leading Logistics Company | Express Delivery
+        </title>
+      </Head>
       <div>
         {/* MINI NAVBAR */}
         <MiniNavbar />
