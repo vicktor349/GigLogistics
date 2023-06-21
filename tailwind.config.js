@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'Inter': 'Inter'
+        'inter': ['Inter']
       },
       colors: {
         'primary': 'rgba(213,52,58)',
