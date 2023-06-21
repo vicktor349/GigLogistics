@@ -84,10 +84,10 @@ const Navbar = () => {
                             </div>
                             <div className='flex space-x-12'>
                                 <div className='hover:text-primary font-medium'>
-                                    <Link href='#'>Our Offices</Link>
+                                    <Link href='/offices'>Our Offices</Link>
                                 </div>
                                 <div className='hover:text-primary font-medium'>
-                                    <Link href='#'>FAQs</Link>
+                                    <Link href='/faqs'>FAQs</Link>
                                 </div>
                                 <div className='hover:text-primary font-medium'>
                                     <Link href='#'>About Us</Link>
@@ -172,13 +172,13 @@ const Navbar = () => {
                     </div>
                     <div className='ssm:mx-10 md:mx-32 mt-4 text-secondary'>
                         <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
-                            <Link href='#' className='my-20'>
+                            <Link href='/offices' className='my-20'>
                                 Our Offices
                             </Link>
                         </div>
 
                         <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
-                            <Link href='#'>
+                            <Link href='/faqs'>
                                 FAQs
                             </Link>
                         </div>
