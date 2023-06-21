@@ -90,15 +90,17 @@ const Navbar = () => {
                                     <Link href='/faqs'>FAQs</Link>
                                 </div>
                                 <div className='hover:text-primary font-medium'>
-                                    <Link href='#'>About Us</Link>
+                                    <Link href='/aboutus'>About Us</Link>
                                 </div>
                             </div>
                         </div>
                         <div className='ssm:hidden lg:flex lg:items-center lg:justify-center'>
-                            <Button text='Sign In/Sign Up' />
+                            <Link href='/signin' className='w-auto rounded-sm mb-0 whitespace-nowrap overflow-hidden overflow-ellipsis bg-transparent font-medium lg:font-normal lg:bg-primary border-primary border-none sm:border text-sm text-primary lg:text-white p-3 flex justify-center'>
+                                Sign In/Sign Up
+                            </Link>
                         </div>
                         <div className='ssm:flex ssm:items-center ssm:justify-center lg:hidden space-x-2'>
-                            <Link href='#' className='ssm:flex ssm:items-center lg:hidden text-primary font-medium '>
+                            <Link href='/signin' className='ssm:flex ssm:items-center lg:hidden text-primary font-medium '>
                                 Sign In/Sign Up
                             </Link>
                             <div className='hover:cursor-pointer text-2xl'>
@@ -183,7 +185,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
-                            <Link href='#'>
+                            <Link href='/aboutus'>
                                 About Us
                             </Link>
                         </div>
