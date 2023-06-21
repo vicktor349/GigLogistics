@@ -12,14 +12,12 @@ import { CgClose } from 'react-icons/cg'
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
-
-    const handleMenuEnter = () => {
-        setIsMenuOpen(true);
-    };
-    const handleMenuLeave = () => {
-        setIsMenuOpen(false);
-    };
-
+    const closeMobileMenu = () => {
+        setIsOpen(false)
+        setIsMenuOpen(false)
+    }
+    const handleMenuEnter = () => setIsMenuOpen(true);
+    const handleMenuLeave = () => setIsMenuOpen(false)
 
     return (
         <div className='sticky top-0 z-50 bg-[rgba(255,255,255,1)] ssm:mt-3 pt-5 pb-8 shadow-lg'>
@@ -73,7 +71,7 @@ const Navbar = () => {
                                                     E-commerce Logistics
                                                 </Link>
                                                 <Link
-                                                    href="#"
+                                                    href="/walletservices"
                                                     className="block px-4 py-3 text-sm text-gray-700 hover:text-primary"
                                                     role="menuitem"
                                                 >
@@ -87,9 +85,6 @@ const Navbar = () => {
                             <div className='flex space-x-12'>
                                 <div className='hover:text-primary font-medium'>
                                     <Link href='#'>Our Offices</Link>
-                                </div>
-                                <div className='hover:text-primary font-medium'>
-                                    <Link href='#'>Blog</Link>
                                 </div>
                                 <div className='hover:text-primary font-medium'>
                                     <Link href='#'>FAQs</Link>
@@ -136,6 +131,7 @@ const Navbar = () => {
                                     href="/domesticlogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary "
                                     role="menuitem"
+                                    onClick={closeMobileMenu}
                                 >
                                     Domestic Logistics
                                 </Link>
@@ -143,6 +139,7 @@ const Navbar = () => {
                                     href="/corporatelogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
+                                    onClick={closeMobileMenu}
                                 >
                                     Coporate Logistics
                                 </Link>
@@ -150,6 +147,7 @@ const Navbar = () => {
                                     href="/overseashipping"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
+                                    onClick={closeMobileMenu}
                                 >
                                     Overseas Shipping
                                 </Link>
@@ -157,13 +155,15 @@ const Navbar = () => {
                                     href="/ecommercelogistics"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
+                                    onClick={closeMobileMenu}
                                 >
                                     Ecommerce Logistics
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/walletservices"
                                     className="block px-4 py-4 text-sm hover:text-primary"
                                     role="menuitem"
+                                    onClick={closeMobileMenu}
                                 >
                                     Wallet and Added Services
                                 </Link>
@@ -171,22 +171,18 @@ const Navbar = () => {
                         )}
                     </div>
                     <div className='ssm:mx-10 md:mx-32 mt-4 text-secondary'>
-                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
                             <Link href='#' className='my-20'>
                                 Our Offices
                             </Link>
                         </div>
-                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
-                            <Link href='#'>
-                                Blog
-                            </Link>
-                        </div>
-                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
                             <Link href='#'>
                                 FAQs
                             </Link>
                         </div>
-                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium'>
+                        <div className='hover:text-primary hover:cursor-pointer py-4 font-medium' onClick={closeMobileMenu}>
                             <Link href='#'>
                                 About Us
                             </Link>
