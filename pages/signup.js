@@ -50,36 +50,31 @@ const signup = () => {
                     <form onSubmit={handleSubmit}>
                         <div>
                             <div className='grid grid-cols-2 gap-8'>
-                                <Input icon={<CgProfile size='24' />} value={state.firstName} id='firstName' onChange={handleChange} placeholder='First Name' className='mb-8' size='lg' />
-                                <Input icon={<CgProfile size='24' />} value={state.lastName} id='lastName' onChange={handleChange} placeholder='Last Name' className='mb-8' size='lg' />
+                                <Input icon={<CgProfile size='24' />} value={state.firstName} id='firstName' onChange={handleChange} placeholder='First Name' className='mb-8' size='lg' required />
+                                <Input icon={<CgProfile size='24' />} value={state.lastName} id='lastName' onChange={handleChange} placeholder='Last Name' className='mb-8' size='lg' required />
                             </div>
-                            <Input icon={<IoAtSharp size='24' />} type='email' value={state.email} id='email' onChange={handleChange} size='lg' className='mb-8' placeholder='Email Address' />
+                            <Input icon={<IoAtSharp size='24' />} type='email' value={state.email} id='email' onChange={handleChange} size='lg' className='mb-8' placeholder='Email Address' required />
                             {
                                 passMatch
-                                    ? <PasswordInput icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' />
-                                    : <PasswordInput error="Passwords dont'match" icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' />
+                                    ? <PasswordInput icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' required />
+                                    : <PasswordInput error="Passwords dont'match" icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' required />
 
                             }
                             {
                                 passMatch
-                                    ? <PasswordInput icon={<RiLockPasswordLine size='24' />} value={state.cPassword} id='cPassword' onChange={handleChange} size='lg' className='mb-8' placeholder='Confirm Password' />
-                                    : <PasswordInput error="Passwords dont't match" icon={<RiLockPasswordLine size='24' />} value={state.cPassword} id='cPassword' onChange={handleChange} size='lg' className='mb-8' placeholder='Confirm Password' />
+                                    ? <PasswordInput icon={<RiLockPasswordLine size='24' />} value={state.cPassword} id='cPassword' onChange={handleChange} size='lg' className='mb-8' placeholder='Confirm Password' required />
+                                    : <PasswordInput error="Passwords dont't match" icon={<RiLockPasswordLine size='24' />} value={state.cPassword} id='cPassword' onChange={handleChange} size='lg' className='mb-8' placeholder='Confirm Password' required />
                             }
-                            <div>
-                                {state.password !== state.cPassword ? "" : ""}
-                                {passMatch ? "" : "Passwords don't match"}
-                            </div>
                             {
                                 !passMatch
-                                    ? <button className='mb-8 text-[#666] bg-[#ccc] font-bold w-full p-4 rounded-xl hover:cursor-not-allowed'>
+                                    ? <div className='mb-8 text-[#666] text-center bg-[#ccc] font-bold w-full p-4 rounded-xl hover:cursor-not-allowed'>
                                         Sign Up
-                                    </button>
+                                    </div>
                                     : <button type='submit' className='mb-8 text-white bg-black font-bold w-full p-4 rounded-xl'>
                                         Sign Up
                                     </button>
                             }
                             <p className='text-center text-text'>Already have an account? <Link href='/signin' className='underline hover:cursor-pointer'>Log In</Link></p>
-
                         </div>
                     </form>
                 </div>
