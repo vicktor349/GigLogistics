@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { CgProfile } from 'react-icons/cg'
 import { IoAtSharp } from 'react-icons/io5'
 import { RiLockPasswordLine } from 'react-icons/ri'
-
+import axios from 'axios'
 
 const signup = () => {
     const [state, setState] = useState({
@@ -33,9 +33,20 @@ const signup = () => {
             [id]: value
         }));
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        const details = { ...state }
         console.log(state.firstName, state.lastName, state.email, state.password, state.cPassword)
+        try {
+            await axios({
+                method: 'POST',
+                url: 'http://localhost:3001/api/auth/signup',
+                data: details,
+                headers: { 'Content-Type': 'application/json' }
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
     return (
         <>
