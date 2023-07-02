@@ -1,11 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input, PasswordInput } from '@mantine/core';
 import { IoAtSharp } from 'react-icons/io5'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import Head from 'next/head';
 import Link from 'next/link';
+import axios from 'axios'
 
 const signin = () => {
+    const [state, setState] = useState({
+        email: "",
+        password: "",
+    })
+    const [errMsg, setErrMsg] = useState('')
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setState((prevState) => ({
+            ...prevState,
+            [id]: value
+        }));
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const details = { ...state }
+        try {
+            await axios({
+                method: 'POST',
+                url: 'http://localhost:3001/api/auth/signin',
+                data: details,
+                headers: { 'Content-Type': 'application/json' }
+            })
+        } catch (err) {
+            setErrMsg(err.response.data.msg)
+        }
+    }
     return (
         <>
             <Head>
@@ -17,28 +44,39 @@ const signin = () => {
                         <div className='text-text text-2xl font-bold mb-10 text-center'>
                             Sign In
                         </div>
-                        <div className='mx-auto'>
-                            <Input
-                                className='mb-10'
-                                icon={<IoAtSharp size='24' />}
-                                placeholder="Your email"
-                                size="lg"
-                                type='email'
-                                required
-                            />
-                            <PasswordInput
-                                className='mb-10'
-                                placeholder="Password"
-                                icon={<RiLockPasswordLine size='24' />}
-                                size='lg'
-                                required
-                            />
-                            <p className='underline hover:cursor-pointer mb-5'>Forgot Password?</p>
-                            <button className='mb-5 text-white bg-black font-bold w-full p-4 rounded-xl'>
-                                Login
-                            </button>
-                            <p className='mb-5 text-center text-text'>Don&apos;t have an account? <Link href='/signup' className='underline hover:cursor-pointer'>Sign Up</Link></p>
-                        </div>
+                        <form onSubmit={handleSubmit}>
+                            <div className='mx-auto'>
+                                <Input
+                                    className='mb-10'
+                                    icon={<IoAtSharp size='24' />}
+                                    placeholder="Your email"
+                                    size="lg"
+                                    type='email'
+                                    value={state.email}
+                                    id='email'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <PasswordInput
+                                    className='mb-3'
+                                    placeholder="Password"
+                                    value={state.password}
+                                    id='password'
+                                    onChange={handleChange}
+                                    icon={<RiLockPasswordLine size='24' />}
+                                    size='lg'
+                                    required
+                                />
+                                <div className='text-red-700 mb-7 text-center'>
+                                    {errMsg}
+                                </div>
+                                <p className='underline hover:cursor-pointer mb-5'>Forgot Password?</p>
+                                <button className='mb-5 text-white bg-black font-bold w-full p-4 rounded-xl'>
+                                    Login
+                                </button>
+                                <p className='mb-5 text-center text-text'>Don&apos;t have an account? <Link href='/signup' className='underline hover:cursor-pointer'>Sign Up</Link></p>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
