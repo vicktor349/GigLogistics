@@ -68,7 +68,7 @@ const signup = () => {
                             {
                                 passMatch
                                     ? <PasswordInput icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' required />
-                                    : <PasswordInput error="Passwords dont'match" icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' required />
+                                    : <PasswordInput error="Passwords don't match" icon={<RiLockPasswordLine size='24' />} value={state.password} id='password' onChange={handleChange} size='lg' className='mb-8' placeholder='Password' required />
 
                             }
                             {
