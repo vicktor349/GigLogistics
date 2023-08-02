@@ -1,23 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
+import Cookies from 'js-cookie'
+import React, { useEffect } from 'react'
+import withAuth from '@/components/useAuthentication'
 
 const dashboard = () => {
+
     return (
         <div>Dashboard</div>
 
     )
 }
-
-export async function getServerSideProps(context) {
-    const { req } = context;
-
-    // Retrieve the token from the cookie
-    console.log(context)
-    return {
-        props: {
-            token: null,
-        },
-    };
-}
-
-export default dashboard;
+export default withAuth(dashboard);
