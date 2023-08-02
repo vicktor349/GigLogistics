@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head';
 import { createStyles, Title, Text, Button, Container, Group, rem } from '@mantine/core';
 
 
@@ -44,21 +45,26 @@ const useStyles = createStyles((theme) => ({
 const notFound = () => {
     const { classes } = useStyles();
     return (
-        <div>
-            <Container className={classes.root}>
-                <div className={classes.label}>404</div>
-                <Title className={classes.title}>You have found a secret place.</Title>
-                <Text color="dimmed" size="lg" align="center" className={classes.description}>
-                    Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has
-                    been moved to another URL.
-                </Text>
-                <Group position="center">
-                    <Button variant="subtle" size="md" component='a' href='/'>
-                        Take me back to home page
-                    </Button>
-                </Group>
-            </Container>
-        </div>
+        <>
+            <Head>
+                <title>404 | Not Found</title>
+            </Head>
+            <div>
+                <Container className={classes.root}>
+                    <div className={classes.label}>404</div>
+                    <Title className={classes.title}>You have found a secret place.</Title>
+                    <Text color="dimmed" size="lg" align="center" className={classes.description}>
+                        Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has
+                        been moved to another URL.
+                    </Text>
+                    <Group position="center">
+                        <Button variant="subtle" size="md" component='a' href='/'>
+                            Take me back to home page
+                        </Button>
+                    </Group>
+                </Container>
+            </div>
+        </>
     )
 }
 
