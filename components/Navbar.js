@@ -27,7 +27,6 @@ const Navbar = () => {
     useEffect(() => {
         const cookieToken = Cookies.get('jwtToken')
 
-
         if (cookieToken) {
             setToken(cookieToken)
         }
