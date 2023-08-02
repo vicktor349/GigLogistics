@@ -114,14 +114,14 @@ const Navbar = () => {
                                 token ?
                                     <div className='ssm:hidden lg:flex lg:items-center lg:justify-center hover:cursor-pointer select-none'>
                                         <div className=' mr-10 hover:bg-gray-50 p-3 rounded'>
-                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-2xl text-gray-400" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path></svg>
+                                            <svg strokeWidth="currentColor" fill="currentColor" viewBox="0 0 24 24" className="text-2xl text-gray-400" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path></svg>
                                         </div>
                                         <Menu shadow="md" width={215} trigger='hover'>
                                             <Menu.Target>
                                                 <div className='flex items-center'>
                                                     <div className='flex items-center hover:bg-gray-50 py-1 px-3 text-gray rounded'>
                                                         <h1 className='font-semibold px-2 text-gray-800'>Segun Layomi</h1>
-                                                        <Avatar radius='xl' src='avatar.png' alt='Avatar' />
+                                                        <Avatar radius='xl' alt='Avatar' />
                                                         <IoArrowDownSharp className='ml-4' />
                                                     </div>
                                                 </div>
