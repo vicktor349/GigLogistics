@@ -5,8 +5,11 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios'
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 const signin = () => {
+    const router = useRouter()
     const [state, setState] = useState({
         email: "",
         password: "",
@@ -28,11 +31,19 @@ const signin = () => {
                 url: 'http://localhost:3001/api/auth/signin',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
+            }).then(response => {
+                const token = response.data.token
+                Cookies.set('jwtToken', token, { expires: 7, secure: true, sameSite: 'strict' });
+                if (response.status && token) {
+                    router.push('/dashboard')
+                }
             })
         } catch (err) {
-            setErrMsg(err.response.data.msg)
+            console.log(err)
         }
+        setState({ email: '', password: '' })
     }
+
     return (
         <>
             <Head>
