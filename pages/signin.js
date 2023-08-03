@@ -35,8 +35,9 @@ const signin = () => {
                 const token = response.data.token
                 Cookies.set('jwtToken', token, { expires: 7, secure: true, sameSite: 'strict' });
                 if (response.status && token) {
-                    router.push('/dashboard')
+                    router.push('/')
                 }
+                window.location.reload()
             })
         } catch (err) {
             console.log(err)
