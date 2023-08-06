@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { BiChevronDown, BiEdit, BiLogOut } from 'react-icons/bi'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
-import { Menu, Button, rem, Avatar } from '@mantine/core';
+import { Menu, PinInput, Avatar, Modal, Button, Group } from '@mantine/core';
 import Cookies from 'js-cookie'
-import { BsBell, BsWallet } from 'react-icons/bs'
+import { BsWallet } from 'react-icons/bs'
 import { IoArrowDownSharp } from 'react-icons/io5'
 import { FiUser } from 'react-icons/fi'
 import { MdLockReset } from 'react-icons/md'
+import { useDisclosure } from '@mantine/hooks';
 
 
 
@@ -18,6 +19,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
     const [token, setToken] = useState('')
+    const [opened, { open, close }] = useDisclosure(false);
     const closeMobileMenu = () => {
         setIsOpen(false)
         setIsMenuOpen(false)
@@ -30,11 +32,12 @@ const Navbar = () => {
         if (cookieToken) {
             setToken(cookieToken)
         }
-
     }, [])
 
     return (
         <div className='sticky top-0 z-50 bg-[rgba(255,255,255,1)] ssm:mt-3 pt-5 pb-8 shadow-lg'>
+
+            {/* SCREEN VIEW */}
             <div className='flex ssm:mx-6 md:mx-32 lg:mx-14 items-center'>
                 <div className='h-full'>
                     <Link href='/'>
@@ -115,11 +118,70 @@ const Navbar = () => {
                                         <div className=' mr-10 hover:bg-gray-50 p-3 rounded'>
                                             <svg strokeWidth="currentColor" fill="currentColor" viewBox="0 0 24 24" className="text-2xl text-gray-400" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path></svg>
                                         </div>
-                                        <Menu shadow="md" width={215} trigger='hover'>
+                                        <Menu shadow="md" width={215}>
                                             <Menu.Target>
                                                 <div className='flex items-center'>
                                                     <div className='flex items-center hover:bg-gray-50 py-1 px-3 text-gray rounded'>
                                                         <h1 className='font-semibold px-2 text-gray-800'>Segun Layomi</h1>
+                                                        <Avatar radius='xl' alt='Avatar' />
+                                                        <IoArrowDownSharp className='ml-4' />
+                                                    </div>
+                                                </div>
+                                            </Menu.Target>
+                                            <Menu.Dropdown className='font-semibold'>
+                                                <Menu.Item icon={<FiUser size={18} />}>My Profile</Menu.Item>
+                                                <Menu.Item icon={<BsWallet size={18} />}>
+                                                    <Link href='/transactions'>
+                                                        My Transaction
+                                                    </Link>
+                                                </Menu.Item>
+                                                <Menu.Item icon={<BiEdit size={18} />} onClick={open}>
+                                                    Change Wallet Pin
+                                                </Menu.Item>
+                                                {/* CHANGE WALLET PIN CONTENT */}
+                                                <Modal opened={opened} onClose={close} title="Change wallet pin">
+                                                    <div className='grid place-items-center'>
+                                                        <PinInput title='Enter your old pin' className='py-20' />
+                                                        <PinInput title='Enter your new pin' className='py-20' />
+                                                        <button className='bg-black text-white rounded-md py-3 px-10'>
+                                                            Confirm
+                                                        </button>
+                                                    </div>
+                                                </Modal>
+                                                <Menu.Item icon={<MdLockReset size={18} />}>Reset Wallet Pin</Menu.Item>
+                                                <Menu.Item icon={<BiLogOut size={18} />}>Logout</Menu.Item>
+                                            </Menu.Dropdown>
+                                        </Menu>
+                                    </div>
+                                    :
+                                    <div className='ssm:hidden lg:flex lg:items-center lg:justify-center'>
+                                        <Link href='/signin' className='w-auto rounded-sm mb-0 whitespace-nowrap overflow-hidden overflow-ellipsis bg-transparent font-medium lg:font-normal lg:bg-primary border-primary border-none sm:border text-sm text-primary lg:text-white p-3 flex justify-center'>
+                                            Sign In/Sign Up
+                                        </Link>
+                                    </div>
+                            }
+                        </div>
+                        <div className='ssm:flex ssm:items-center ssm:justify-center lg:hidden space-x-2'>
+                            {
+                                token ?
+                                    <div className='flex items-center lg:justify-center hover:cursor-pointer select-none'>
+                                        <div className='hover:bg-gray-50 p-3 rounded'>
+                                            <Menu>
+                                                <Menu.Target>
+                                                    <svg strokeWidth="currentColor" fill="currentColor" viewBox="0 0 24 24" className="text-2xl text-gray-400" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path></svg>
+                                                </Menu.Target>
+                                                <Menu.Dropdown>
+                                                    <Menu.Item>
+                                                        No Unread notifications
+                                                    </Menu.Item>
+                                                </Menu.Dropdown>
+                                            </Menu>
+                                        </div>
+                                        <Menu shadow="md" width={215}>
+                                            <Menu.Target>
+                                                <div className='flex items-center'>
+                                                    <div className='flex items-center hover:bg-gray-50 py-1 px-3 text-gray rounded'>
+                                                        <h1 className='ssm:hidden sm:inline-block font-semibold px-2 text-gray-800'>Segun Layomi</h1>
                                                         <Avatar radius='xl' alt='Avatar' />
                                                         <IoArrowDownSharp className='ml-4' />
                                                     </div>
@@ -135,17 +197,10 @@ const Navbar = () => {
                                         </Menu>
                                     </div>
                                     :
-                                    <div className='ssm:hidden lg:flex lg:items-center lg:justify-center'>
-                                        <Link href='/signin' className='w-auto rounded-sm mb-0 whitespace-nowrap overflow-hidden overflow-ellipsis bg-transparent font-medium lg:font-normal lg:bg-primary border-primary border-none sm:border text-sm text-primary lg:text-white p-3 flex justify-center'>
-                                            Sign In/Sign Up
-                                        </Link>
-                                    </div>
+                                    <Link href='/signin' className='ssm:flex ssm:items-center lg:hidden text-primary font-medium '>
+                                        Sign In/Sign Up
+                                    </Link>
                             }
-                        </div>
-                        <div className='ssm:flex ssm:items-center ssm:justify-center lg:hidden space-x-2'>
-                            <Link href='/signin' className='ssm:flex ssm:items-center lg:hidden text-primary font-medium '>
-                                Sign In/Sign Up
-                            </Link>
                             <div className='hover:cursor-pointer text-2xl'>
                                 {
                                     isOpen ?
@@ -158,6 +213,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            {/* OPENED BURGER FUNCTION */}
             {isOpen && (
                 <div className='absolute bg-[rgba(255,255,255,1)] w-full lg:hidden'>
                     <div
