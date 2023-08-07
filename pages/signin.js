@@ -33,7 +33,7 @@ const signin = () => {
                 headers: { 'Content-Type': 'application/json' }
             }).then(response => {
                 const token = response.data.token
-                Cookies.set('jwtToken', token, { expires: 7, secure: true, sameSite: 'strict' });
+                localStorage.setItem('jwtToken', token)
                 if (response.status && token) {
                     router.push('/')
                 }
