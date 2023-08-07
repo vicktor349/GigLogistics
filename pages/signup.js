@@ -40,7 +40,7 @@ const signup = () => {
         try {
             await axios({
                 method: 'POST',
-                url: 'http://localhost:3001/api/auth/signup',
+                url: 'https://logisticserver.onrender.com/api/auth/signup',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
             })

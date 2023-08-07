@@ -28,7 +28,7 @@ const signin = () => {
         try {
             await axios({
                 method: 'POST',
-                url: 'http://localhost:3001/api/auth/signin',
+                url: 'https://logisticserver.onrender.com/api/auth/signin',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
             }).then(response => {
