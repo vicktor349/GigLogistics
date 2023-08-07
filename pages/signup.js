@@ -6,8 +6,10 @@ import { CgProfile } from 'react-icons/cg'
 import { IoAtSharp } from 'react-icons/io5'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const signup = () => {
+    const router = useRouter()
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -43,6 +45,12 @@ const signup = () => {
                 url: 'https://logisticserver.onrender.com/api/auth/signup',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
+            }).then(response => {
+                const token = response.data.token
+                localStorage.setItem('jwtToken')
+                if (response.status && token) {
+                    router.push('/transactions')
+                }
             })
         } catch (err) {
             console.log(err)
