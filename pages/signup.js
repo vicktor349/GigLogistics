@@ -38,7 +38,6 @@ const signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const details = { ...state }
-        console.log(state.firstName, state.lastName, state.email, state.password, state.cPassword)
         try {
             await axios({
                 method: 'POST',
@@ -47,6 +46,7 @@ const signup = () => {
                 headers: { 'Content-Type': 'application/json' }
             }).then(response => {
                 const token = response.data.token
+                console.log(response.status)
                 localStorage.setItem('jwtToken')
                 if (response.status && token) {
                     router.push('/transactions')
