@@ -27,12 +27,16 @@ const Navbar = () => {
     const handleMenuEnter = () => setIsMenuOpen(true);
     const handleMenuLeave = () => setIsMenuOpen(false);
     useEffect(() => {
-        const cookieToken = Cookies.get('jwtToken')
-
+        const cookieToken = localStorage.getItem('jwtToken')
         if (cookieToken) {
             setToken(cookieToken)
         }
     }, [])
+
+    const logout = () => {
+        localStorage.removeItem('jwtToken')
+        location.reload()
+    }
 
     return (
         <div className='sticky top-0 z-50 bg-[rgba(255,255,255,1)] ssm:mt-3 pt-5 pb-8 shadow-lg'>
@@ -149,7 +153,7 @@ const Navbar = () => {
                                                     </div>
                                                 </Modal>
                                                 <Menu.Item icon={<MdLockReset size={18} />}>Reset Wallet Pin</Menu.Item>
-                                                <Menu.Item icon={<BiLogOut size={18} />}>Logout</Menu.Item>
+                                                <Menu.Item icon={<BiLogOut size={18} />} onClick={logout}>Logout</Menu.Item>
                                             </Menu.Dropdown>
                                         </Menu>
                                     </div>
@@ -192,7 +196,7 @@ const Navbar = () => {
                                                 <Menu.Item icon={<BsWallet size={18} />}>My Transaction</Menu.Item>
                                                 <Menu.Item icon={<BiEdit size={18} />}>Change Wallet Pin</Menu.Item>
                                                 <Menu.Item icon={<MdLockReset size={18} />}>Reset Wallet Pin</Menu.Item>
-                                                <Menu.Item icon={<BiLogOut size={18} />}>Logout</Menu.Item>
+                                                <Menu.Item icon={<BiLogOut size={18} />} onClick={logout}>Logout</Menu.Item>
                                             </Menu.Dropdown>
                                         </Menu>
                                     </div>
