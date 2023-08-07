@@ -1,5 +1,6 @@
 import React from 'react'
-import { Tabs } from '@mantine/core';
+import { Autocomplete, Tabs } from '@mantine/core';
+import { FaCaretDown } from 'react-icons/fa';
 
 
 
@@ -20,14 +21,14 @@ const Tab = () => {
 
             </div>
             <Tabs.Panel value="first" pt="xs">
-                <p className='text-center'>Transaction history</p>
+                <p className='text-center text-xl font-semibold'>Transaction history</p>
                 <div>
                     <div className='flex mx-36 font-semibold'>
                         <p className='mr-auto'>Details</p>
                         <p className='ml-auto'>Amount</p>
                     </div>
                     <div className='bg-white rounded-lg py-10 px-20 mx-36 my-12'>
-                        <h1 className='text-center text-text font-xl '>
+                        <h1 className='text-center font-bold text-main text-xl '>
                             No placement Found
                         </h1>
                     </div>
@@ -35,11 +36,50 @@ const Tab = () => {
             </Tabs.Panel>
 
             <Tabs.Panel value="second" pt="xs">
-                Second tab color is blue, it gets this value from props, props have the priority and will
-                override context value
+                <div className='flex justify-center'>
+                    <p className='text-center text-xl font-semibold'>Shipment history</p>
+                    <Autocomplete
+                        className='ml-32'
+                        icon={<FaCaretDown />}
+
+                        placeholder="Filter by status"
+                        data={['Shipment created', 'Assigned for Pickup', 'Processing', 'Cancelled', 'Dispute', 'Delivered', 'Visited', 'Resolved', 'Onward Processing']}
+                    />
+                </div>
+                <div>
+                    <div className='flex mx-36 font-semibold'>
+                        <p className='mr-auto'>Details</p>
+                        <p className='ml-auto'>Amount</p>
+                    </div>
+                    <div className='bg-white rounded-lg py-10 px-20 mx-36 my-12'>
+                        <h1 className='text-center font-bold text-main text-xl '>
+                            No shipment Found
+                        </h1>
+                    </div>
+                </div>
             </Tabs.Panel>
             <Tabs.Panel value='third' pt='xs'>
-                Third Teal
+                <div className='flex justify-center'>
+                    <p className='text-center text-xl font-semibold'>Shipment history</p>
+                    <Autocomplete
+                        className='ml-32'
+                        icon={<FaCaretDown />}
+
+                        placeholder="Filter by status"
+                        data={['All', 'Processing', 'Processed']}
+                    />
+                </div>
+                <div>
+                    <div className='flex mx-36 font-semibold'>
+                        <p className='mr-auto'>Details</p>
+                        <p className='ml-auto'>Amount</p>
+                    </div>
+                    <div className='bg-white rounded-lg py-10 px-20 mx-36 my-12'>
+                        <h1 className='text-center font-bold text-main text-xl '>
+                            No shipment Found
+                        </h1>
+                    </div>
+                </div>
             </Tabs.Panel>
         </Tabs>
     )
