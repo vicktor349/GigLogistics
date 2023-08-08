@@ -41,6 +41,7 @@ const signin = () => {
             })
         } catch (err) {
             console.log(err)
+            setErrMsg(err)
         }
         setState({ email: '', password: '' })
     }
