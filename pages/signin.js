@@ -25,8 +25,7 @@ const signin = () => {
             [id]: value
         }));
     };
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async () => {
         setSubmitting(true)
         const details = { ...state }
         try {
