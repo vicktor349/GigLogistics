@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import { Input, PasswordInput } from '@mantine/core'
+import { Input, Loader, PasswordInput, Notification } from '@mantine/core'
 import Link from 'next/link'
 import { CgProfile } from 'react-icons/cg'
 import { IoAtSharp } from 'react-icons/io5'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { BsCheckLg } from 'react-icons/bs'
 
 const signup = () => {
     const router = useRouter()
@@ -19,6 +20,8 @@ const signup = () => {
 
     })
     const [passMatch, setPassMatch] = useState(true)
+    const [submitting, setSubmitting] = useState(false)
+    const [registerSuccess, setRegisterSuccess] = useState(false)
     useEffect(() => {
         validatePassword()
     }, [state])
@@ -37,21 +40,24 @@ const signup = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setSubmitting(true)
         const details = { ...state }
         try {
             await axios({
                 method: 'POST',
-                url: 'https://logisticserver.onrender.com/api/auth/signup',
+                url: 'http://localhost:3001/auth/signup',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
             }).then(response => {
                 const token = response.data.token
+                localStorage.setItem('jwtToken', token)
                 console.log(response.status)
-                localStorage.setItem('jwtToken')
                 if (response.status && token) {
+                    setRegisterSuccess(true)
                     router.push('/transactions')
                 }
             })
+            window.location.reload();
         } catch (err) {
             console.log(err)
         }
@@ -89,11 +95,19 @@ const signup = () => {
                                     ? <div className='mb-8 text-[#666] text-center bg-[#ccc] font-bold w-full p-4 rounded-xl hover:cursor-not-allowed'>
                                         Sign Up
                                     </div>
-                                    : <button type='submit' className='mb-8 text-white bg-black font-bold w-full p-4 rounded-xl'>
-                                        Sign Up
+                                    :
+                                    <button type='submit' className='mb-8 text-white bg-black font-bold w-full p-4 rounded-xl'>
+                                        {submitting ? <Loader variant='dots' className='mx-auto my-2' color='white' /> : "Sign Up"}
                                     </button>
                             }
                             <p className='text-center text-text'>Already have an account? <Link href='/signin' className='underline hover:cursor-pointer'>Log In</Link></p>
+                            {
+                                registerSuccess ?
+                                    <Notification icon={<BsCheckLg size="1.1rem" />} className='absolute right-0 bottom-2' color="teal" title="Registration Successful">
+                                    </Notification>
+                                    :
+                                    ""
+                            }
                         </div>
                     </form>
                 </div>
