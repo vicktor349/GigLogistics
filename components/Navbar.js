@@ -11,6 +11,7 @@ import { IoArrowDownSharp } from 'react-icons/io5'
 import { FiUser } from 'react-icons/fi'
 import { MdLockReset } from 'react-icons/md'
 import { useDisclosure } from '@mantine/hooks';
+import { useRouter } from 'next/router'
 
 
 const Navbar = () => {
@@ -18,6 +19,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [token, setToken] = useState('')
     const [opened, { open, close }] = useDisclosure(false);
+    const router = useRouter()
     const closeMobileMenu = () => {
         setIsOpen(false)
         setIsMenuOpen(false)
@@ -33,6 +35,7 @@ const Navbar = () => {
 
     const logout = () => {
         localStorage.removeItem('jwtToken')
+        router.push('/')
         location.reload()
     }
 
