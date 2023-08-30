@@ -5,14 +5,12 @@ import Link from 'next/link'
 import { BiChevronDown, BiEdit, BiLogOut } from 'react-icons/bi'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
-import { Menu, PinInput, Avatar, Modal, Button, Group } from '@mantine/core';
-import Cookies from 'js-cookie'
+import { Menu, PinInput, Avatar, Modal } from '@mantine/core';
 import { BsWallet } from 'react-icons/bs'
 import { IoArrowDownSharp } from 'react-icons/io5'
 import { FiUser } from 'react-icons/fi'
 import { MdLockReset } from 'react-icons/md'
 import { useDisclosure } from '@mantine/hooks';
-
 
 
 const Navbar = () => {
