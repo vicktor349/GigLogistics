@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link';
 import { MdOutlineLocalShipping } from 'react-icons/md'
 import { SlSocialDropbox, SlPlane } from 'react-icons/sl'
