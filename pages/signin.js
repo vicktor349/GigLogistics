@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Input, PasswordInput } from '@mantine/core';
+import { Input, Loader, PasswordInput, Notification } from '@mantine/core';
 import { IoAtSharp } from 'react-icons/io5'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios'
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
+import { BsCheckLg } from 'react-icons/bs';
 
 const signin = () => {
     const router = useRouter()
@@ -15,6 +15,9 @@ const signin = () => {
         password: "",
     })
     const [errMsg, setErrMsg] = useState('')
+    const [loginSuccess, setLoginSuccess] = useState(false)
+    const [submitting, setSubmitting] = useState(false)
+
     const handleChange = (e) => {
         const { id, value } = e.target;
         setState((prevState) => ({
@@ -24,23 +27,25 @@ const signin = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setSubmitting(true)
         const details = { ...state }
         try {
             await axios({
                 method: 'POST',
-                url: 'https://logisticserver.onrender.com/api/auth/signin',
+                url: 'http://localhost:3001/auth/signin',
                 data: details,
                 headers: { 'Content-Type': 'application/json' }
             }).then(response => {
                 const token = response.data.token
                 localStorage.setItem('jwtToken', token)
                 if (response.status && token) {
+                    setLoginSuccess(true)
                     router.push('/')
                 }
                 window.location.reload()
             })
         } catch (err) {
-            console.log(err)
+            setErrMsg(err.response.data.msg)
         }
         setState({ email: '', password: '' })
     }
@@ -84,9 +89,17 @@ const signin = () => {
                                 </div>
                                 <p className='underline hover:cursor-pointer mb-5'>Forgot Password?</p>
                                 <button className='mb-5 text-white bg-black font-bold w-full p-4 rounded-xl'>
-                                    Login
+                                    {submitting ? <Loader variant='dots' className='mx-auto my-2' color='white' /> : "Login"}
                                 </button>
                                 <p className='mb-5 text-center text-text'>Don&apos;t have an account? <Link href='/signup' className='underline hover:cursor-pointer'>Sign Up</Link></p>
+                                {
+                                    loginSuccess ?
+                                        <Notification icon={<BsCheckLg size="1.1rem" />} className='absolute right-0 bottom-2' color="teal" title="Login Successful">
+                                        </Notification>
+                                        :
+                                        ""
+                                }
+
                             </div>
                         </form>
                     </div>
