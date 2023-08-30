@@ -70,7 +70,7 @@ const signup = () => {
             <div className='bg-background'>
                 <div className='pt-12 pb-20 ssm:pb-36 mx-auto ssm:w-11/12 sm:w-7/12 md:w-6/12 lg:w-5/12'>
                     <div className='text-center'>
-                        <h1 className='text-text text-2xl font-bold mb-10 text-center'>Sign up with us as an</h1>
+                        <h1 className='text-text text-2xl font-bold mb-10 text-center'>Sign up with us</h1>
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div>
